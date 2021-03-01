@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace CalculatorApp
 {
     /*
-     * This is Main window class
+     * This is Main window class which contains UI components for the buttons.
      */
     public partial class MainWindow : Window
     {

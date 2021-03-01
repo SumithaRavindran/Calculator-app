@@ -2,20 +2,30 @@
 
 namespace CalculatorApp
 {
-    class CalculatorOrchestrator
+    /*
+    * This class contains the business logic for the calculator app.
+    */
+    public class CalculatorOrchestrator
     {
-        string input = string.Empty;
+        public string input = string.Empty;
         string operand1 = string.Empty;
         string operand2 = string.Empty;
         char operation;
         double result = 0.0;
 
+        /*
+        * This method updates the given number
+        */
         public void UpdateNumberToSystem(TextBox txtDisplay,  string number)
         {
             txtDisplay.Text = "";
             input += number;
             txtDisplay.Text += input;
         }
+
+        /*
+        * This method changes the sign for the input digit
+        */
         public void ChangeSign(TextBox txtDisplay)
         {
             double num1;
@@ -24,6 +34,9 @@ namespace CalculatorApp
             txtDisplay.Text = input = num1.ToString();
         }
 
+        /*
+        * This method contains the mathematical operator
+        */
         public void UpdateOperation(TextBox txtDisplay, char operation)
         {
             txtDisplay.Text = "";
@@ -32,6 +45,10 @@ namespace CalculatorApp
             input = string.Empty;
             txtDisplay.Text += input;
         }
+
+        /*
+        * This method computes the result
+        */
         public void ComputeResult(TextBox txtDisplay)
         {
             operand2 = input;
@@ -83,6 +100,9 @@ namespace CalculatorApp
             operand1 = result.ToString();
         }
 
+        /*
+        * This method adds the decimal point
+        */
         public void ExecutePeriod(TextBox txtDisplay)
         {
             txtDisplay.Text = "";
@@ -91,6 +111,9 @@ namespace CalculatorApp
             txtDisplay.Text += input;
         }
 
+        /*
+         * This method handles the global clear
+        */
         public void ExecuteCE(TextBox txtDisplay)
         {
             txtDisplay.Text = "";
@@ -98,6 +121,10 @@ namespace CalculatorApp
             this.operand1 = string.Empty;
             this.operand2 = string.Empty;
         }
+
+        /*
+        * This method handles the local clear
+        */
         public void ExecuteC(TextBox txtDisplay)
         {
             txtDisplay.Text = "";
