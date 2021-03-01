@@ -66,19 +66,19 @@ namespace CalculatorApp
         
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            calculatorOrchestrator.UpdateOperation(txtDisplay, '+');
+            calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Add);
         }
         private void btnSub_Click(object sender, RoutedEventArgs e)
         {
-            calculatorOrchestrator.UpdateOperation(txtDisplay, '-');
+            calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Subtract);
         }
         private void btnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            calculatorOrchestrator.UpdateOperation(txtDisplay, '*');
+            calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Multiply);
         }
         private void btnDivide_Click(object sender, RoutedEventArgs e)
         {
-            calculatorOrchestrator.UpdateOperation(txtDisplay, '/');
+            calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Divide);
         }
         private void BtnEquals_Click(object sender, RoutedEventArgs e)
         {
@@ -109,7 +109,7 @@ namespace CalculatorApp
             if(e.Key == Key.OemPlus)
             {
                 if(shiftPressed)
-                    calculatorOrchestrator.UpdateOperation(txtDisplay, '+');
+                    calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Add);
                 else
                     calculatorOrchestrator.ComputeResult(txtDisplay);
                 shiftPressed = false;
@@ -118,18 +118,18 @@ namespace CalculatorApp
 
             if(e.Key == Key.D8 && shiftPressed)
             {
-                calculatorOrchestrator.UpdateOperation(txtDisplay, '*');
+                calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Multiply);
                 shiftPressed = false;
                 return;
             }
             if (e.Key == Key.OemMinus && shiftPressed)
             {
-                calculatorOrchestrator.UpdateOperation(txtDisplay, '-');
+                calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Subtract);
                 shiftPressed = false;
                 return;
             }
 
-            if (e.Key == Key.OemPeriod && shiftPressed)
+            if (e.Key == Key.OemPeriod)
             {
                 calculatorOrchestrator.ExecutePeriod(txtDisplay);
                 shiftPressed = false;
@@ -137,7 +137,7 @@ namespace CalculatorApp
             }
             if (e.Key == Key.OemQuestion && shiftPressed)
             {
-                calculatorOrchestrator.UpdateOperation(txtDisplay, '/');
+                calculatorOrchestrator.UpdateOperation(txtDisplay, Operator.Divide);
                 shiftPressed = false;
                 return;
             }
@@ -146,6 +146,7 @@ namespace CalculatorApp
             if (e.Key == Key.Enter)
             {
                 calculatorOrchestrator.ComputeResult(txtDisplay);
+                shiftPressed = false;
                 return;
             }
                 

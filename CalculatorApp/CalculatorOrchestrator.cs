@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace CalculatorApp
 {
@@ -8,16 +9,23 @@ namespace CalculatorApp
     public class CalculatorOrchestrator
     {
         public string input = string.Empty;
-        string operand1 = string.Empty;
-        string operand2 = string.Empty;
-        char operation;
+        public string operand1 = string.Empty;
+        public string operand2 = string.Empty;
+        public char operation;
         double result = 0.0;
+        private static bool isContinue = false;
+        private string prevResult = string.Empty;
 
         /*
         * This method updates the given number
         */
         public void UpdateNumberToSystem(TextBox txtDisplay,  string number)
         {
+            if (isContinue)
+            {
+                input = string.Empty;
+                isContinue = false;
+            }
             txtDisplay.Text = "";
             input += number;
             txtDisplay.Text += input;
@@ -28,8 +36,7 @@ namespace CalculatorApp
         */
         public void ChangeSign(TextBox txtDisplay)
         {
-            double num1;
-            double.TryParse(input, out num1);
+            double.TryParse(input, out double num1);
             num1 *= -1;
             txtDisplay.Text = input = num1.ToString();
         }
@@ -37,13 +44,14 @@ namespace CalculatorApp
         /*
         * This method contains the mathematical operator
         */
-        public void UpdateOperation(TextBox txtDisplay, char operation)
+        public void UpdateOperation(TextBox txtDisplay, Operator op)
         {
             txtDisplay.Text = "";
             operand1 = input;
-            this.operation = operation;
+            this.operation = Convert.ToChar(op);
             input = string.Empty;
             txtDisplay.Text += input;
+            isContinue = false;
         }
 
         /*
@@ -97,7 +105,9 @@ namespace CalculatorApp
 
             else
                 txtDisplay.Text = result.ToString();
-            operand1 = result.ToString();
+            input = result.ToString();
+            isContinue = true;
+           
         }
 
         /*
