@@ -16,5 +16,9 @@ This project is written in WPF using c# programming language. This App is a desk
 - Decimal precision supported in the result is 3. 
 - Calculator doesn't support chaining operations 
 
+## UI view 
+![image](https://user-images.githubusercontent.com/59520305/109447167-ef15d300-79f7-11eb-9f3b-fb8ed1fae329.png)
+
+
 
 
